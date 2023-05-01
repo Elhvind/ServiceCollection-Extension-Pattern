@@ -2,5 +2,7 @@
 
 public sealed class FooOptions
 {
-    public string Bar { get; set; } = null!;
+    public int Amount { get; set; }
+
+    public string BaseUrl { get; set; } = null!;
 }

@@ -1,5 +1,5 @@
-using Bar.Interfaces;
-using Foo.Interfaces;
+using Bar;
+using Foo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers;

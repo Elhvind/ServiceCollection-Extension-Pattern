@@ -1,23 +1,23 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace Bar;
 
-internal sealed class BarService : IBarService
+public sealed class BarService : IBarService
 {
     private readonly BarRepository _barRepository;
-    private readonly BarOptions _options;
+    private readonly IConfiguration _config;
 
     public BarService(
         BarRepository barRepository,
-        IOptions<BarOptions> options)
+        IConfiguration config)
     {
         _barRepository = barRepository;
-        _options = options.Value;
+        _config = config;
     }
 
     public async Task GetBar()
     {
-        var amount = _options.Amount;
+        var amount = _config.GetValue<int>("Bar:Amount");
         await _barRepository.GetBar(amount);
     }
 }

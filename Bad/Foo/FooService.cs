@@ -1,23 +1,23 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace Foo;
 
-internal sealed class FooService : IFooService
+public sealed class FooService : IFooService
 {
     private readonly FooRepository _fooRepository;
-    private readonly FooOptions _options;
+    private readonly IConfiguration _config;
 
     public FooService(
         FooRepository fooRepository,
-        IOptions<FooOptions> options)
+        IConfiguration config)
     {
         _fooRepository = fooRepository;
-        _options = options.Value;
+        _config = config;
     }
 
     public async Task GetFoo()
     {
-        var amount = _options.Amount;
+        var amount = _config.GetValue<int>("Foo:Amount");
         await _fooRepository.GetFoo(amount);
     }
 }

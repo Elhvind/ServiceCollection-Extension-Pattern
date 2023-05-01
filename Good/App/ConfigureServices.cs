@@ -9,12 +9,14 @@ public static class ConfigureServices
     {
         services.AddBar(options =>
         {
-            options.Foo = config.GetValue<string>("Bar:Foo")!;
+            options.Amount = config.GetValue<int>("Bar:Amount");
+            options.BaseUrl = config.GetValue<string>("Bar:BaseUrl")!;
         });
 
         services.AddFoo(options =>
         {
-            options.Bar = config.GetValue<string>("Foo:Bar")!;
+            options.Amount = config.GetValue<int>("Foo:Amount");
+            options.BaseUrl = config.GetValue<string>("Foo:BaseUrl")!;
         });
 
         return services;
