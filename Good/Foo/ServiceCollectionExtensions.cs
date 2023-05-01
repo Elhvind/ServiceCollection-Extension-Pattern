@@ -20,8 +20,8 @@ public static class ServiceCollectionExtensions
 
         ArgumentException.ThrowIfNullOrEmpty(settings.BaseUrl);
 
-        if (settings.Amount <= 0)
-            throw new ArgumentException("Amount must be a possitive number");
+        if (settings.Id <= 0)
+            throw new ArgumentException("ID must be a possitive number");
 
         if (!Uri.TryCreate(settings.BaseUrl, UriKind.Absolute, out var baseUrl))
             throw new ArgumentException("Invalid base url");

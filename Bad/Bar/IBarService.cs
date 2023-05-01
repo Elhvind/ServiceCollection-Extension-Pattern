@@ -2,5 +2,5 @@
 
 public interface IBarService
 {
-    Task GetBar();
+    Task<BarDTO> GetBar();
 }

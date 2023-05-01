@@ -2,5 +2,5 @@
 
 public interface IFooService
 {
-    Task GetFoo();
+    Task<FooDTO> GetFoo();
 }

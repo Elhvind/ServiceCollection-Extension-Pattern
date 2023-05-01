@@ -2,7 +2,7 @@
 
 public sealed class BarOptions
 {
-    public int Amount { get; set; }
+    public int Id { get; set; }
 
     public string BaseUrl { get; set; } = null!;
 }

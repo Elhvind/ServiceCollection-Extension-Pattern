@@ -9,9 +9,13 @@ public sealed class FooRepository
         _httpClientFactory = httpClientFactory;
     }
 
-    public Task GetFoo(int amount)
+    public Task<FooDTO> GetFoo(int id)
     {
         var client = _httpClientFactory.CreateClient("FooClient");
-        return Task.CompletedTask;
+        var foo = new FooDTO()
+        {
+            Id = id
+        };
+        return Task.FromResult(foo);
     }
 }

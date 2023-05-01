@@ -9,9 +9,13 @@ public sealed class BarRepository
         _httpClientFactory = httpClientFactory;
     }
 
-    public Task GetBar(int amount)
+    public Task<BarDTO> GetBar(int id)
     {
         var client = _httpClientFactory.CreateClient("BarClient");
-        return Task.CompletedTask;
+        var bar = new BarDTO()
+        {
+            Id = id
+        };
+        return Task.FromResult(bar);
     }
 }

@@ -15,9 +15,9 @@ public sealed class BarService : IBarService
         _config = config;
     }
 
-    public async Task GetBar()
+    public async Task<BarDTO> GetBar()
     {
-        var amount = _config.GetValue<int>("Bar:Amount");
-        await _barRepository.GetBar(amount);
+        var id = _config.GetValue<int>("Bar:Id");
+        return await _barRepository.GetBar(id);
     }
 }

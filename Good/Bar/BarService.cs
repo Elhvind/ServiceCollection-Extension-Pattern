@@ -15,9 +15,9 @@ internal sealed class BarService : IBarService
         _options = options.Value;
     }
 
-    public async Task GetBar()
+    public async Task<BarDTO> GetBar()
     {
-        var amount = _options.Amount;
-        await _barRepository.GetBar(amount);
+        var amount = _options.Id;
+        return await _barRepository.GetBar(amount);
     }
 }

@@ -20,8 +20,10 @@ public class AppController : ControllerBase
     }
 
     [HttpGet]
-    public bool Get()
+    public async Task<(FooDTO, BarDTO)> Get()
     {
-        return true;
+        var foo = await _fooService.GetFoo();
+        var bar = await _barService.GetBar();
+        return (foo, bar);
     }
 }

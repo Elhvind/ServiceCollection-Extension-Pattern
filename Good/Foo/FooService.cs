@@ -15,9 +15,9 @@ internal sealed class FooService : IFooService
         _options = options.Value;
     }
 
-    public async Task GetFoo()
+    public async Task<FooDTO> GetFoo()
     {
-        var amount = _options.Amount;
-        await _fooRepository.GetFoo(amount);
+        var amount = _options.Id;
+        return await _fooRepository.GetFoo(amount);
     }
 }

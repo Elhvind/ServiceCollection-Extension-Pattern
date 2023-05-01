@@ -15,9 +15,9 @@ public sealed class FooService : IFooService
         _config = config;
     }
 
-    public async Task GetFoo()
+    public async Task<FooDTO> GetFoo()
     {
-        var amount = _config.GetValue<int>("Foo:Amount");
-        await _fooRepository.GetFoo(amount);
+        var id = _config.GetValue<int>("Foo:Id");
+        return await _fooRepository.GetFoo(id);
     }
 }
