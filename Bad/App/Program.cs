@@ -1,8 +1,11 @@
+using App;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddServices();
 
 var app = builder.Build();
 
