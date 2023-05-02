@@ -26,6 +26,8 @@ public static class ServiceCollectionExtensions
         if (!Uri.TryCreate(settings.BaseUrl, UriKind.Absolute, out var baseUrl))
             throw new ArgumentException("Invalid base url");
 
+        services.Configure(options);
+
         services.AddScoped<IBarService, BarService>();
         services.AddScoped<BarRepository>();
 

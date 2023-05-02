@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace App.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class AppController : ControllerBase
+[Route("[controller]/[action]")]
+public class FooBarController : ControllerBase
 {
     private readonly IBarService _barService;
     private readonly IFooService _fooService;
 
-    public AppController(
+    public FooBarController(
         IBarService barService,
         IFooService fooService)
     {
@@ -20,10 +20,10 @@ public class AppController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<(FooDTO, BarDTO)> Get()
-    {
-        var foo = await _fooService.GetFoo();
-        var bar = await _barService.GetBar();
-        return (foo, bar);
-    }
+    public async Task<FooDTO> Foo()
+        => await _fooService.GetFoo();
+
+    [HttpGet]
+    public async Task<BarDTO> Bar()
+        => await _barService.GetBar();
 }
